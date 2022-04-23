@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('notification', [App\Http\Controllers\SendNotification::class, 'create'])->name('notification.create');
+Route::post('notification', [App\Http\Controllers\SendNotification::class, 'store'])->name('notification.store');
